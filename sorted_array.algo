@@ -1,0 +1,47 @@
+PROCEDURE swap(VAR xp,VAR yp:INTEGER)
+VAR
+    tmp:INTEGER;
+BEGIN
+    tmp:=xp;
+    xp:=yp;
+    yp:=tmp;
+END
+PROCEDURE bubble_sort(VAR arr:ARRAY_OF INTEGER)
+VAR
+    i,j,n:INTEGER;
+BEGIN
+    n:=arr.length;
+    FOR i FROM 0 TO n-1 STEP 1  DO
+      FOR j FROM 0 TO n-i-1 STEP 1  DO
+        IF (arr[i]>arr[i+1]) THEN
+            swap(arr[j],arr[j+1]);
+        END_IF
+      END_FOR
+    END_FOR  
+END
+PROCEDURE read_array(n:INTEGER,VAR arr:ARRAY_OF INTEGER)
+VAR
+    i:INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        read(arr[i])
+    END_FOR
+END
+PROCEDURE write_array(n:INTEGER,VAR arr:ARRAY_OF INTEGER)
+VAR
+    i:INTEGER;
+BEGIN
+    FOR i FROM 0 TO n-1 STEP 1  DO
+        write(arr[i])
+    END_FOR
+END
+ALGORITHM sorted_array
+VAR
+    n:INTEGER;
+BEGIN
+    read(n);
+    read_array(n,arr);
+    bubble_sort(VAR arr:ARRAY_OF INTEGER);
+    write("Ssorted array:")
+    write_array(n,tab);
+END
